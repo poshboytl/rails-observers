@@ -7,6 +7,7 @@ module ActionController #:nodoc:
       autoload :Sweeping, 'rails/observers/action_controller/caching/sweeping'
     end
 
-    ActionController::Base.extend Sweeping::ClassMethods if defined?(ActiveRecord)
+    # ActionController::Base.extend Sweeping::ClassMethods if defined?(ActiveRecord)
+    ::ActionController::Base.send(:include, Sweeping) if defined?(ActiveRecord)
   end
 end
